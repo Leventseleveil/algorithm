@@ -15,9 +15,9 @@ typedef struct {
  	struct LNode *next;
  }LNode, *LinkList; 
  
-LinkList InitList();//³õÊ¼»¯µ¥Ñ­»·Á´±í 
-int getRandom(int m);//»ñÈ¡Ëæ»úÊı 
-void loop(LinkList head);//ÖğÒ»µ¯³ö½áµã 
+LinkList InitList();//åˆå§‹åŒ–å•å¾ªç¯é“¾è¡¨ 
+int getRandom(int m);//è·å–éšæœºæ•° 
+void loop(LinkList head);//é€ä¸€å¼¹å‡ºç»“ç‚¹ 
  
 int main(){ 
  	LinkList head = InitList();
@@ -25,9 +25,9 @@ int main(){
 }
 
 LinkList InitList(){
-	//LÎª´øÍ·½áµãµÄÑ­»·µ¥Á´±íµÄÍ·Ö¸Õë 
+	//Lä¸ºå¸¦å¤´ç»“ç‚¹çš„å¾ªç¯å•é“¾è¡¨çš„å¤´æŒ‡é’ˆ 
 	int n, m, M;
- 	printf("Çë·Ö±ğÊäÈëÈËÊı£¬±¨ÊıÉÏÏŞÖµ:\n");
+ 	printf("è¯·åˆ†åˆ«è¾“å…¥äººæ•°ï¼ŒæŠ¥æ•°ä¸Šé™å€¼:\n");
  	scanf("%d %d",&n,&m);
  	
  	LinkList head = (LNode *)malloc(sizeof(LNode));
@@ -35,7 +35,7 @@ LinkList InitList(){
  	LinkList tail = head;
  	
  	
- 	printf("ÊÖ¶¯ÊäÈëÃ¿ÈËÊÖ³ÖÃÜÂëÇë°´ 1 £¬Ëæ»úÉú³ÉÃÜÂëÇë°´ 2 :\n");
+ 	printf("æ‰‹åŠ¨è¾“å…¥æ¯äººæ‰‹æŒå¯†ç è¯·æŒ‰ 1 ï¼Œéšæœºç”Ÿæˆå¯†ç è¯·æŒ‰ 2 :\n");
  	int flag;
  	scanf("%d",&flag);
  	
@@ -53,7 +53,7 @@ LinkList InitList(){
 	}
 	
 	else {
-		printf("ÄÇÃ´¾ÍÇë·Ö±ğÊäÈëÃÜÂë°É£º\n");
+		printf("é‚£ä¹ˆå°±è¯·åˆ†åˆ«è¾“å…¥å¯†ç å§ï¼š\n");
 		for(int i = 0; i < n; i++){
  		LNode* p = (LNode *)malloc(sizeof(LNode)); 
  		p->person.order = i + 1;
@@ -68,7 +68,7 @@ LinkList InitList(){
 	
 	LinkList k= head->next;
 	
-	printf("Ã¿¸öÈËµÄĞòºÅ¼°ÆäÊÖÎÕµÄÃÜÂë·Ö±ğÎª:\n");
+	printf("æ¯ä¸ªäººçš„åºå·åŠå…¶æ‰‹æ¡çš„å¯†ç åˆ†åˆ«ä¸º:\n");
 	for(int j = 0; j < n; j++){
 		printf("%d ",k->person.order);
 		k = k->next;
@@ -89,7 +89,7 @@ LinkList InitList(){
  
  void loop(LinkList head){
  	int M;
- 	printf("Éè¶¨³õÊ¼ÃÜÂëÖµ:");
+ 	printf("è®¾å®šåˆå§‹å¯†ç å€¼:");
  	scanf("%d",&M);
  	
  	LinkList p = head->next;
@@ -97,18 +97,18 @@ LinkList InitList(){
  	int count = 1;
  	
  	while(p->next != p){
- 		//ÕÒµ½ÒªÉ¾³ı½áµãµÄÇ°Ò»¸ö½áµã 
+ 		//æ‰¾åˆ°è¦åˆ é™¤ç»“ç‚¹çš„å‰ä¸€ä¸ªç»“ç‚¹ 
  		while(count++ < M-1){
  			p = p->next;
 		}
 		
-		q = p->next;//qÖ¸ÏòÒªÉ¾³ıµÄ½áµã 
-		p->next = q->next;//p->nextÖ¸ÏòqµÄÏÂÒ»¸ö½áµã£¬ÕâÑù±£³Öµ¥Ñ­»·ÁĞ±íµÄ½á¹¹ 
-		M = q->person.password;//»ñÈ¡ÒªÉ¾³ı½áµãµÄÃÜÂë£¬ 
-		printf("%d ",q->person.order);//²¢´òÓ¡ÆäĞòºÅ¡£ 
-		free(q); //ÊÍ·Åq 
+		q = p->next;//qæŒ‡å‘è¦åˆ é™¤çš„ç»“ç‚¹ 
+		p->next = q->next;//p->nextæŒ‡å‘qçš„ä¸‹ä¸€ä¸ªç»“ç‚¹ï¼Œè¿™æ ·ä¿æŒå•å¾ªç¯åˆ—è¡¨çš„ç»“æ„ 
+		M = q->person.password;//è·å–è¦åˆ é™¤ç»“ç‚¹çš„å¯†ç ï¼Œ 
+		printf("%d ",q->person.order);//å¹¶æ‰“å°å…¶åºå·ã€‚ 
+		free(q); //é‡Šæ”¾q 
 
-        p = p->next;//pÖ¸ÏòÏÂÒ»¸ö½áµã 
+        p = p->next;//pæŒ‡å‘ä¸‹ä¸€ä¸ªç»“ç‚¹ 
 		count = 1;
 	 }
  	printf("%d",p->person.order);
